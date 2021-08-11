@@ -1,8 +1,8 @@
-export default function Button(){
+export default function Button({onClickHandler}){
     return(
         <>
             <div className='container_button'>
-                <button>Generate password</button>
+                <button onClick={onClickHandler}>Generate password</button>
             </div>
 
             <style jsx>{`

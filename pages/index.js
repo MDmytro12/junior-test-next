@@ -4,12 +4,21 @@ import Select from '../components/Select'
 import Button from '../components/Button'
 import PasswordInput from '../components/PasswordInput'
 import classNames from 'classnames'
+import { generateMultiple } from 'generate-password'
 
 
 export default function Main(){
 
     const [selectValue , setSelectValue] = useState('1')
-    const [checkValue , setCheckValue] = useState(false);
+    const [checkValue , setCheckValue] = useState(false)
+    const [password , setPassword] = useState('');
+
+    const onClickHandler = ( ) => {
+        setPassword( generateMultiple( 1 , {
+            numbers : checkValue,
+            length: selectValue
+        } )[0] )
+    }
 
     const onSelectHandler = (e) => {
         setSelectValue(e.target.value)
@@ -40,9 +49,12 @@ export default function Main(){
                     <label htmlFor='withNumber' className={classNames({ 'active' : checkValue })}>Add number`s to password ?</label>
                 </div>
 
-                <Button/>
-
-                <PasswordInput/>
+                <Button onClickHandler={onClickHandler} />
+                
+                {password && 
+                    <PasswordInput password={password}/>
+                }
+                
 
             </div>
 
