@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+export default function App({ Component, pageProps }) {
+    return(<>
+            <Component {...pageProps} />
+            <style jsx global>{`
+                *{
+                    margin: 0;
+                    padding: 0;
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-
-export default MyApp
+                } 
+                body , #__next{
+                    height: 100vh;
+                }
+            `}</style>
+        </>)
+        
+  }
